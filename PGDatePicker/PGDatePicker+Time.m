@@ -59,8 +59,10 @@
     NSString *str = [[self.pickerView textOfSelectedRowInComponent:0] componentsSeparatedByString:self.hourString].firstObject;
     dateComponents.hour = [str integerValue];
     if (component == 0) {
-        BOOL refresh = [self setMinuteListWithComponent:component dateComponents:dateComponents refresh:true];
-        [self.pickerView reloadComponent:1 refresh:refresh];
+//        BOOL refresh = [self setMinuteListWithComponent:component dateComponents:dateComponents refresh:true];
+//        [self.pickerView reloadComponent:1 refresh:refresh];
+//        BOOL refresh = [self setMinuteListWithComponent:component dateComponents:dateComponents refresh:true];
+        [self.pickerView reloadComponent:1 refresh:true];
     }
 }
 @end

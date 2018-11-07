@@ -255,6 +255,7 @@
     PGDatePickManager *datePickManager = [[PGDatePickManager alloc]init];
     PGDatePicker *datePicker = datePickManager.datePicker;
     datePicker.delegate = self;
+    datePicker.minInterval = 10;
     datePicker.datePickerMode = PGDatePickerModeTime;
     [self presentViewController:datePickManager animated:false completion:nil];
 

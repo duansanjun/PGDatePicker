@@ -1238,13 +1238,34 @@ static NSString *const reuseIdentifier = @"PGDatePickerView";
             }
         }
         NSMutableArray *minutes = [NSMutableArray arrayWithCapacity:index];
-        for (NSUInteger i = minimum; i <= maximum; i++) {
+        // 余数
+        NSInteger remainderMin = minimum & self.minInterval;
+       
+        if (remainderMin != 0) {
+            minimum = minimum + self.minInterval - remainderMin;
+        }
+        
+        // 余数
+        NSInteger remainderMax = minimum & self.minInterval;
+        if (remainderMin != 0) {
+            minimum = minimum  - remainderMax;
+        }
+        for (NSUInteger i = minimum; i <= maximum; i += self.minInterval) {
             if (i < 10) {
-                [minutes addObject:[NSString stringWithFormat:@"0%ld", i]];
+                [minutes addObject:[NSString stringWithFormat:@"%ld", i]];
             }else {
                 [minutes addObject:[@(i) stringValue]];
             }
         }
+        
+        
+//        for (NSUInteger i = minimum; i <= maximum; i++) {
+//            if (i < 10) {
+//                [minutes addObject:[NSString stringWithFormat:@"%ld", i]];
+//            }else {
+//                [minutes addObject:[@(i) stringValue]];
+//            }
+//        }
         _minuteList = minutes;
     }
     return _minuteList;

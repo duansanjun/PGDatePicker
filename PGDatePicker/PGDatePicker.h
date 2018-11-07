@@ -93,6 +93,11 @@ typedef NS_ENUM(NSUInteger, PGDatePickerType) {
  英语     language = en
  */
 @property(nonatomic, copy) NSString *language;
+
+
+// 分钟的间隔
+@property (assign, nonatomic) NSInteger minInterval;
+
 /**
  相当于确定按钮，执行此方法PGDatePickerDelegate代理方法会得到值
  */
